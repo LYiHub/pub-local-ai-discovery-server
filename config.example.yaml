@@ -1,0 +1,9 @@
+service:
+  name: "Local-AI-01"
+
+api:
+  port: 11434
+  type: "openai"
+  auth: "none"
+  base_path: "/v1"
+  models_path: "/v1/models"

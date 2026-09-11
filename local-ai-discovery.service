@@ -1,0 +1,21 @@
+[Unit]
+Description=Local AI Discovery Server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+DynamicUser=yes
+EnvironmentFile=-/etc/default/local-ai-discovery
+ExecStart=/opt/local-ai-discovery/.venv/bin/python /opt/local-ai-discovery/local_ai_discovery.py --config /etc/local-ai-discovery/config.yaml
+Restart=on-failure
+RestartSec=3
+TimeoutStopSec=10
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectHome=yes
+ProtectSystem=strict
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+
+[Install]
+WantedBy=multi-user.target
